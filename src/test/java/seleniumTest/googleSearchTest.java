@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
+import javax.swing.JOptionPane;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
