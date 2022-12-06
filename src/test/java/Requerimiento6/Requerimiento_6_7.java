@@ -15,6 +15,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Sleeper;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -103,6 +104,19 @@ private WebDriver driver;
 			WebElement correo = driver.findElement(correoLocator);
 			assertEquals(Correo,correo.getAttribute("value").toString());
 			
+			Thread.sleep(2000);
+			
+			
+			driver.findElement(By.xpath("/html/body/div[1]/main/section/div[2]/form/div[2]/div[9]/div/label/input")).sendKeys("12345678");
+			driver.findElement(By.xpath("/html/body/div[1]/main/section/div[2]/form/div[2]/div[10]/div/label/input")).sendKeys("12345678");
+			WebElement element = driver.findElement(By.cssSelector(".btn-primary"));
+		    Actions builder = new Actions(driver);
+		    builder.moveToElement(element).perform();
+		    driver.findElement(By.cssSelector(".btn-primary")).click();
+		    Thread.sleep(2000);
+			WebElement respuesta = driver.findElement(By.xpath("/html/body/div[1]/main/section/div[2]/form/div[4]/div/div/ul/li[2]"));
+			String message = "This password is entirely numeric.";
+			assertEquals(message,respuesta.getText().toString());
 		}
 		
 	}
